@@ -1,0 +1,19 @@
+{
+  "name": "2.2p",
+  "version": "1.0.0",
+  "description": "Express/Node.js practical for SIT725",
+  "license": "MIT",
+  "author": "Joshua Kempster",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jo-kem/SIT725_s225656649/2.2P.git"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
