@@ -8,7 +8,28 @@
 
 <body>
     <h1>RESTematics</h1>
-    <p>Use the endpoints to perform calculations.</p>
+    <p>Use the fields below to perform calculations.</p>
+    <form id="calcForm" action="/api/add" method="GET">
+        <label for="operation">Operation:</label>
+        <select id="operation" name="operation">
+            <option value="/api/add">Add</option>
+            <option value="/api/subtract">Subtract</option>
+            <option value="/api/multiply">Multiply</option>
+            <option value="/api/divide">Divide</option>
+        </select>
+        <input type="text" id="a" name="a" required placeholder="a">
+        <input type="text" id="b" name="b" required placeholder="b">
+        <button type="submit">Calculate</button>
+    </form>
+    <p>Use the multiplies and adds endpoints to perform calculations on multiple numbers at a time.</p>
+
+    <script>
+        (function(){
+            const op = document.getElementById('operation');
+            const form = document.getElementById('calcForm');
+            op.addEventListener('change', () => { form.action = op.value; });
+        })();
+    </script>
 </body>
 
 </html>
