@@ -1,0 +1,20 @@
+{
+  "name": "3.2p",
+  "version": "1.0.0",
+  "description": "Getting Graphical practical for SIT725",
+  "homepage": "https://github.com/jo-kem/SIT725_s225656649#readme",
+  "bugs": {
+    "url": "https://github.com/jo-kem/SIT725_s225656649/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jo-kem/SIT725_s225656649.git"
+  },
+  "license": "MIT",
+  "author": "Joshua Kempster",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
