@@ -18,4 +18,48 @@ This directory contains task 2.2P, an express web server with GET APIs that can 
 - server.js: the API functions
 - package.json and package-lock.json: package configs
 
-### ...
+The calculator has a GUI interface for the calc API. In addition, all available APIs and their usage are below:
+
+- **`GET /api/calc`**: Perform a calculation between two numbers.
+	- Query params: `a` (number), `b` (number), `op` (`add` | `subtract` | `multiply` | `divide`).
+	- Example:
+
+```bash
+curl "http://localhost:3000/api/calc?a=2&b=3&op=add"
+```
+
+	- Example response:
+
+```
+{"result": 5}
+```
+
+- **`GET /adds`**: Sum multiple numbers.
+	- Request JSON body: `{"a": [1,2,3]}`
+	- Example:
+
+```bash
+curl http://localhost:3000/adds?a=1,2,3
+```
+
+	- Example response:
+
+```
+{"sum": 6}
+```
+
+- **`GET /multiplies`**: Multiply multiple numbers.
+	- Request JSON body: `{"a": [2,3,4]}`
+	- Example:
+
+```bash
+curl http://localhost:3000/multiplies?a=2,3,4
+```
+
+	- Example response:
+
+```
+{"result": 24}
+```
+
+### 3.2P – Getting Graphical
