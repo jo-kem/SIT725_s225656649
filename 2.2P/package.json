@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jo-kem/SIT725_s225656649/2.2P.git"
+    "url": "git+https://github.com/jo-kem/SIT725_s225656649.git"
   },
   "dependencies": {
     "express": "^5.2.1"
