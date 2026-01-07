@@ -37,14 +37,55 @@
                 <div class="col s12 center-align">
                     <img class="materialboxed materialboxed-image" src="images/motorbike.png">
                 </div>
-                <div class="col s12 center-align">
-                    <a class="waves-effect waves-light btn click-me-button" id="clickMeButton"><i class="material-icons left">auto_fix_high</i>Express Interest</a>
+                <div class="col s6 right-align">
+                    <a class="waves-effect waves-light btn click-me-button modal-trigger" id="expressInterestButton" data-target="modal1"><i class="material-icons left">auto_fix_high</i>Express Interest</a>
+                </div>
+                <div class="col s6 left-align">
+                    <form action="/api/listSubmissions" method="GET">
+                        <button class="waves-effect waves-light btn click-me-button" type="submit">
+                            <i class="material-icons left">auto_fix_high</i>List Community
+                        </button>
+                    </form>
                 </div>
             </div>
             <div class="row">
                 <div id="card-section" class="col s12">
                     <!-- Cards will be dynamically added here -->
                 </div>
+            </div>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Passionate about Ducatis?</h4>
+                <p>Share your details with the community here.</p>
+                <div class="row">
+                    <form class="col s12" action="/api/formSubmit" method="POST" id="interestForm">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="first_name" name="firstname" type="text" class="validate">
+                                <label for="first_name">First Name</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="last_name" name="lastname" type="text" class="validate">
+                                <label for="last_name">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="email" name="email" type="email" class="validate">
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button class="waves-effect waves-light btn click-me-button" id="formSubmit" type="submit">
+                                    <i class="material-icons left">send</i>Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
             </div>
         </div>
     </main>

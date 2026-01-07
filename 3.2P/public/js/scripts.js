@@ -1,14 +1,7 @@
-const clickMe = () => {
-    alert("Button Clicked!");
-}
+// Array to store all form submissions
+let allForms = [];
 
-$(document).ready(function () {
-    $('.materialboxed').materialbox();
-    $("#clickMeButton").click(() => {
-        clickMe();
-    })
-})
-
+// Data for the cards to be displayed
 const cardList = [
     {
         title: "Panigale V4",
@@ -30,6 +23,7 @@ const cardList = [
     }
 ]
 
+// Function to dynamically add cards to the webpage
 const addCards = (items) => {
     items.forEach(item => {
         const card = `<div class="col s12 m4">
@@ -52,5 +46,8 @@ const addCards = (items) => {
 }
 
 $(document).ready(function () {
+    console.log("JS loaded successfully"); // debugging line
+    $('.materialboxed').materialbox();
     addCards(cardList);
+    $('.modal').modal();
 })
