@@ -1,10 +1,10 @@
 # Software Requirements Specification
-## For Locate a Socket
+## For Locate-A-Socket
 
 Version 0.1  
-Prepared by Joshua Kempster
-Deakin University
-07/01/2026
+Prepared by Joshua Kempster  
+Deakin University  
+07/01/2026  
 
 ## Table of Contents
 <!-- TOC -->
@@ -34,35 +34,22 @@ Deakin University
 |      |      |                    |         |
 
 ## 1. Introduction
-💬 _Provides an overview of the document and orients the reader to the system being specified._
-
-➥ Briefly summarize the SRS’s purpose, product scope, intended audience, and how the document is organized. Do not include details here; reference the relevant sections instead.
 
 ### 1.1 Document Purpose
-💬 _Clarifies why this SRS exists, what it contains, and who should use it._
-
-➥ State the purpose of the SRS in 2–4 sentences. Name the primary audiences (e.g., product, engineering, QA, security, compliance, operations) and how they use it across the software lifecycle.
-
-💡 Tips:
-- Emphasize that the SRS defines what the system must do, not how it will do it.
-- Mention related documents (vision/scope, architecture, roadmap, contracts) if relevant.
+This document specifies the software requirements of the Locate-A-Socket software. It does not provide details about how the requirements will be left – simply WHAT the system must do. It is intended for a broad audience – software architects, developers and testers as well as stakeholders who will be involved in the design and maintenance.
 
 ### 1.2 Product Scope
-💬 _Defines the software product’s purpose, boundaries, and relationship to business goals._
+This product is Locate-A-Socket v1.0. Its purpose is to assist electric car drivers to find and use charging stations near them or along their route. It will allow drivers to use location-based services to navigate to sockets and provide a secure payment platform that enables them to complete charging transactions within the application. It will also make prices, charging speeds, availability and other useful information accessible to the driver to inform their decision to use the station. 
 
-➥ Identify the product by name and version/release. In 3–5 sentences, describe its primary purpose, key capabilities, and intended outcomes. Clearly list inclusions and exclusions when this SRS covers part of a larger system. Focus on the “what” and “why.”
-
-💡 Tips:
-- Connect capabilities to business objectives and reference a separate vision/scope document if relevant.
-- Include a simple diagram if it clarifies boundaries within a larger system.
+The management of a grid of sockets is out of scope.
 
 ### 1.3 Document Overview
-💬 _Brief guide to the structure of the SRS so readers can quickly find what they need._
+This document is structured as follows:
+- Section 2: Product Overview. This section includes background and context that influences the requirements for Locate-A-Socket.
+- Section 3: Specific Requirements. This section provides detail about the product including external interfaces, and functional and non-functional requirements.
+- Section 4: Supporting Information. This section contains additional information, currently consisting only of references.
 
-➥ Summarize what each major section covers (Product Overview, Requirements, Verification, Appendixes), note any document conventions, and mention how updates and revision history are managed.
-
-💡 Tips:
-- Keep to 3–5 sentences focusing on navigation and conventions.
+Note that there is currently no detail about Verification/Testing Requirements and no diagrams as these are out of scope for the initial draft required for assessment.
 
 ### 1.4 Definitions, Acronyms, and Abbreviations
 ➥ Help readers understand specialized terms and notation by providing a glossary of domain terms, acronyms, and abbreviations used in the SRS.
@@ -74,12 +61,12 @@ Deakin University
 | Term | Definition                                                                                                                   |
 |------|------------------------------------------------------------------------------------------------------------------------------|
 | API  | Application Programming Interface - A set of definitions and protocols for building and integrating application software     |
+| Socket    | A charging station for an electric vehicle   |
 | SRS  | Software Requirements Specification - A document that describes the intended purpose, requirements, and nature of a software |
 | UI   | User Interface - The visual part of computer application through which a user interacts with a software                      |
 
 
 ## 2. Product Overview
-💬 _Provides background and context influencing the product’s requirements._
 
 ### 2.1 Product Perspective
 💬 _Places the product within a larger ecosystem or lineage._
