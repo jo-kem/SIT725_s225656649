@@ -8,8 +8,8 @@
 }
 
 .main-body {
-    background-color: #f8bbba;
-    color: white;
+    background-color: white;
+    color: #B00E0A;
     height: calc(100vh - 64);
 }
 
@@ -21,8 +21,4 @@
 .click-me-button {
     background-color: darkgoldenrod;
     margin-top: 50px;
-}
-
-.nav {
-  background-color: #B00E0A;
 }
