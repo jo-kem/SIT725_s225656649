@@ -27,10 +27,7 @@ The calculator has a GUI interface for the calc API. In addition, all available 
 ```bash
 curl "http://localhost:3000/api/calc?a=2&b=3&op=add"
 ```
-
-- Example response:
-
-```
+```json
 {"result": 5}
 ```
 
@@ -41,10 +38,7 @@ curl "http://localhost:3000/api/calc?a=2&b=3&op=add"
 ```bash
 curl http://localhost:3000/adds?a=1,2,3
 ```
-
-- Example response:
-
-```
+```json
 {"sum": 6}
 ```
 
@@ -55,10 +49,7 @@ curl http://localhost:3000/adds?a=1,2,3
 ```bash
 curl http://localhost:3000/multiplies?a=2,3,4
 ```
-
-- Example response:
-
-```
+```json
 {"result": 24}
 ```
 
