@@ -1,50 +1,57 @@
 # Software Requirements Specification
+
 ## For Locate-A-Socket
 
 Version 0.1  
 Prepared by Joshua Kempster  
 Deakin University  
-07/01/2026  
+07/01/2026
 
 ## Table of Contents
+
 <!-- TOC -->
-* [1. Introduction](#1-introduction)
-    * [1.1 Document Purpose](#11-document-purpose)
-    * [1.2 Product Scope](#12-product-scope)
-    * [1.3 Document Overview](#13-document-overview)
-    * [1.4 Definitions, Acronyms, and Abbreviations](#14-definitions-acronyms-and-abbreviations)
-* [2. Product Overview](#2-product-overview)
-    * [2.1 Product Perspective](#21-product-perspective)
-    * [2.2 Product Functions](#22-product-functions)
-    * [2.3 User Characteristics](#23-user-characteristics)
-    * [2.4 Product Constraints](#24-product-constraints)
-    * [2.5 Assumptions and Dependencies](#25-assumptions-and-dependencies)
-* [3. Specific Requirements](#3-specific-requirements)
-    * [3.1 External Interfaces](#31-external-interfaces)
-    * [3.2 Functional Requirements](#32-functional-requirements)
-    * [3.3 Non-Functional Requirements](#33-non-functional-requirements)
-* [4. Supporting Information](#4-supporting-information)
+
+- [1. Introduction](#1-introduction)
+  - [1.1 Document Purpose](#11-document-purpose)
+  - [1.2 Product Scope](#12-product-scope)
+  - [1.3 Document Overview](#13-document-overview)
+  - [1.4 Definitions, Acronyms, and Abbreviations](#14-definitions-acronyms-and-abbreviations)
+- [2. Product Overview](#2-product-overview)
+  - [2.1 Product Perspective](#21-product-perspective)
+  - [2.2 Product Functions](#22-product-functions)
+  - [2.3 User Characteristics](#23-user-characteristics)
+  - [2.4 Product Constraints](#24-product-constraints)
+  - [2.5 Assumptions and Dependencies](#25-assumptions-and-dependencies)
+- [3. Specific Requirements](#3-specific-requirements)
+  - [3.1 External Interfaces](#31-external-interfaces)
+  - [3.2 Functional Requirements](#32-functional-requirements)
+  - [3.3 Non-Functional Requirements](#33-non-functional-requirements)
+- [4. Supporting Information](#4-supporting-information)
 <!-- TOC -->
 
 ## Revision History
 
-| Name | Date | Reason For Changes | Version |
-|------|------|--------------------|---------|
-| Joshua Kempster | 07/01/2026 | Initial Draft | 0.1 |
-|      |      |                    |         |
+| Name            | Date       | Reason For Changes | Version |
+| --------------- | ---------- | ------------------ | ------- |
+| Joshua Kempster | 07/01/2026 | Initial Draft      | 0.1     |
+|                 |            |                    |         |
 
 ## 1. Introduction
 
 ### 1.1 Document Purpose
+
 This document specifies the software requirements of the Locate-A-Socket software. It does not provide details about how the requirements will be left – simply WHAT the system must do. It is intended for a broad audience – software architects, developers and testers as well as stakeholders who will be involved in the design and maintenance.
 
 ### 1.2 Product Scope
-This product is Locate-A-Socket v1.0. Its purpose is to assist electric car drivers to find and use charging stations near them or along their route. It will allow drivers to use location-based services to navigate to sockets and provide a secure payment platform that enables them to complete charging transactions within the application. It will also make prices, charging speeds, availability and other useful information accessible to the driver to inform their decision to use the station. 
+
+This product is Locate-A-Socket v1.0. Its purpose is to assist electric car drivers to find and use charging stations near them or along their route. It will allow drivers to use location-based services to navigate to sockets and provide a secure payment platform that enables them to complete charging transactions within the application. It will also make prices, charging speeds, availability and other useful information accessible to the driver to inform their decision to use the station.
 
 The management of a grid of sockets is out of scope.
 
 ### 1.3 Document Overview
+
 This document is structured as follows:
+
 - Section 2: Product Overview. This section includes background and context that influences the requirements for Locate-A-Socket.
 - Section 3: Specific Requirements. This section provides detail about the product including external interfaces, and functional and non-functional requirements.
 - Section 4: Supporting Information. This section contains additional information, currently consisting only of references.
@@ -52,216 +59,183 @@ This document is structured as follows:
 Note that there is currently no detail about Verification/Testing Requirements and no diagrams as these are out of scope for the initial draft required for assessment.
 
 ### 1.4 Definitions, Acronyms, and Abbreviations
-➥ Help readers understand specialized terms and notation by providing a glossary of domain terms, acronyms, and abbreviations used in the SRS.
 
-💡 Tips:
-- Include terms that impact interpretation of requirements (e.g., “user,” “tenant,” “near real-time”).
-- Keep entries alphabetized and consistent across the document set.
-
-| Term | Definition                                                                                                                   |
-|------|------------------------------------------------------------------------------------------------------------------------------|
-| API  | Application Programming Interface - A set of definitions and protocols for building and integrating application software     |
-| Socket    | A charging station for an electric vehicle   |
-| SRS  | Software Requirements Specification - A document that describes the intended purpose, requirements, and nature of a software |
-| UI   | User Interface - The visual part of computer application through which a user interacts with a software                      |
-
+| Term   | Definition                                                                                                                   |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| API    | Application Programming Interface - A set of definitions and protocols for building and integrating application software     |
+| SLA    | Service Level Agreement                                                                                                      |
+| Socket | A charging station for an electric vehicle                                                                                   |
+| SRS    | Software Requirements Specification - A document that describes the intended purpose, requirements, and nature of a software |
+| UI     | User Interface - The visual part of computer application through which a user interacts with a software                      |
 
 ## 2. Product Overview
 
 ### 2.1 Product Perspective
-💬 _Places the product within a larger ecosystem or lineage._
 
-➥ Describe context and origin of the product, whether this is a new product, replacement, or member of a family. If part of a larger system, briefly explain relationships, external interfaces, and key dependencies. Include details on ownership, service level agreements (SLAs), and support models.
+The Locate-A-Socket service is a new product that fits a requirement within an existing, growing landscape. The application will be owned by Locate-A-Socket. It will need to interface externally with existing sockets provided by a range of companies, both to source information from them, and to unlock and interact with them. It will also interface with a payment gateway.
 
-💡 Tips:
-- Highlight upstream/downstream systems and ownership boundaries.
-- A high-level context diagram may help to orient the reader.
+The service will be hosted on cloud-based infrastructure and users will interact with it via existing operating systems and browsers. It will need to be supported by both mobile and desktop: Windows, MacOS, Android and iOS.
 
 ### 2.2 Product Functions
-💬 _High-level summary of what the product enables users or systems to do._
 
-➥ Provide a concise overview of the major functional areas/features. Defer detailed behaviors, data, and edge cases to Section 3.
+The product will provide the following main functions:
 
-💡 Tips:
-- 5–10 bullets are often sufficient at this level, grouping related functions logically.
-- Include a top-level data flow or use case diagram if helpful.
+- Account management
+  - User registration and login
+  - Account and personal detail management
+  - Saved routes, sockets and payment methods
+- Taking secure payments
+- Map visual to find and navigate to sockets
+- Reliable search function for finding sockets, including location-based
+- Information about the sockets, including price, speed and availability
+- Unlocking and accessing the sockets
 
 ### 2.3 User Characteristics
-💬 _Defines the user groups and the attributes that affect requirements._
 
-➥ Identify user classes, roles, and personas, noting expertise, access levels, frequency of use, accessibility needs, and goals.
+**General Users:** Drivers who are the main users of the application for finding and using sockets.
 
-💡 Tips:
-- Define user classes by behavior, not just titles.
-- Note localization and accessibility considerations that affect UI/UX requirements.
+- Expertise: Low to high – a range of expertises, generally expected to be able to navigate a web application and payment systems
+- Access level: To customer-facing functions only
+- Frequency of use: Weekly, but high volume of users
+- Accessibility needs: Ensure accessibility features are available
+
+**Admin:** Professionals who manage the app, user accounts, fix bugs and ensure functionality.
+
+- Expertise: High technical expertise
+- Access level: All
+- Frequency of use: Very regular, but low volume of users
+- Accessibility needs: N/A
+
+**Socket Owners:** Professionals who want to add, remove or update information about the sockets they manage.
+
+- Expertise: Medium technical expertise, generally expected to be able to navigate a web application, but not necessarily interact programmatically with a backend.
+- Access level:
+- Frequency of use: Low to medium regularity, low volume of users
+- Accessibility needs: Ensure accessibility features are available
+
+**Support Staff:** Professionals who provide support to drivers and socket owners, walking them through functionality, providing workarounds for bugs, or escalating issues.
+
+- Expertise: High technical expertise
+- Access level: All customer-facing functions, plus account management and backend information
+- Frequency of use: Very regular, low volume of users
+- Accessibility needs: Ensure accessibility features are available
 
 ### 2.4 Product Constraints
-💬 _Defines contextual limitations or conditions shaping design and implementation._
 
-➥ Describe constraints such as mandated interfaces, technology stacks, regulatory obligations, QoS baselines, hardware limitations, AI/ML model families, and organizational policies.
+- Must operate in all major browsers – Chrome, Safari, Firefox, Edge, etc.
+- Must integrate into the existing sockets
+- Must support latest iOS and Android versions
+- Must support payment gateway
 
-💡 Tips:
-- State constraints as verifiable "must" statements (e.g., “must use FIPS 140–3 validated crypto modules”).
-- Distinguish external/internal and mandatory/preferred constraints.
-- Avoid design decisions unless truly binding.
-
-📝 Note:
-Requirements (Section 3) defines verifiable system obligations—specific behaviors or qualities the system shall exhibit in order to satisfy limits described in this section.
+- Prefer support for Android Auto and Carplay
 
 ### 2.5 Assumptions and Dependencies
-💬 _External assumed factors or conditions, as opposed to known facts, that the project relies on._
 
-➥ List assumptions about environment, hardware, usage patterns, third-party components/services, and organizational support. List dependencies on external systems, libraries, or teams. For each, indicate potential impact if proven false.
+Operational Assumptions
 
-💡 Tips:
-- Link assumptions to risk register with owner and mitigation when available.
+- Users have a reliable internet connection and use modern web-browsers that support location services
+- Users will have basic technological literacy and familiarity with web-based applications.
+- There will be organisational support for ongoing customer engagement staff
 
+Technical Assumptions
+
+- All upstream systems (e.g., databases, third-party APIs, payment gateways) will be available according to SLAs.
+- The organisation will support the technical implementation, maintenance, and scaling of the application.
+
+Environmental Assumptions
+
+- The legal and societal pressures that are driving the change to electric vehicles will continue.
+
+Dependencies
+
+- Reliance on up-to-date information from socket suppliers, either programmatically, or via a management interface.
+- Reliance on a secure payment platform
 
 ## 3. Specific Requirements
-💬 _This section specifies **verifiable** requirements of the software product to enable design and testing._
 
-➥ State requirements to a level of detail sufficient for design and verification. Use unique identifiers, consistent keywords (shall/should/may), and clear conditions. Describe inputs, processing in response, and outputs where applicable. Reference the relevant 2.3 Product Constraints that the requirement addresses.
+**Integration with Payment Gateway** (Interface and Functional Requirement)
+The application shall use a payment platform for authorisation and charging for socket-use.
+Acceptance criteria:
 
-📃 Template (applies to **all** requirements):
-```markdown
-- ID: REQ-FUNC-001
-- Title: Short title, representative of the requirement...
-- Statement: The system shall...
-- Rationale: ...
-- Acceptance Criteria: ...
-- Verification Method: Test | Analysis | Inspection | Demonstration | Other
-- More Information: Additional context. Links to related artifacts.
-```
+- As a user, I want to easily and reliably make payments online, so that I can interact with a socket entirely from within the app.
+  – As a socket supplier, I want to receive payments, so that I can offer the customer the charging service.
+- As a company owner/executive, I want to reliably receive payments, so that my company is profitable.
+- As an IT support staff, I want integration with the payment platform to be seamless and backward compatible, so that the number of errors and missed payments is minimised.
 
-Requirement ID schema and traceability:
-- ID format: REQ-[AREA]-[NNN]-[VER] (optional -[VER] if versioned), where AREA ∈ {FUNC, INT, PERF, SEC, REL, AVAIL, OBS, COMP, INST, BUILD, DIST, MAINT, REUSE, PORT, COST, DEAD, POC, CM, ML}.
-- Uniqueness: IDs must be unique and immutable; changes increment -[VER] and are recorded in Revision History.
-- Traceability: Each test artifact may reference the requirement ID.
+**Integration with Socket Information** (Interface and Functional Requirement)
+The application shall ingest information about sockets that can be displayed to the user. This includes: name, id, branding, charging speed, price, location and number of available sockets at the location.
+Acceptance criteria:
 
-💡 Tips:
-- Make each requirement testable and unambiguous, using standard metrics and avoiding vague terms (e.g., “user-friendly,” “fast”).
+- As a user, I want to know where a socket is and if it is available, so that I can decide whether to navigate to it.
+- As a user, I want to know the price of a socket, so that I can compare it to others and decide which best fits my needs.
+- As a user, I want to know the charging speed of a socket, so that I can compare it to others and decide which best fits my needs.
+  – As a socket supplier, I want my branding on the sockets, so that I can build brand recognition and loyalty.
+- As a customer support staff, I want this information available to a customer, so that the number of calls requesting information is reduced.
 
-### 3.1 External Interfaces
-💬 _Specifies all external inputs and outputs, covering both required and provided interfaces._
+**Map Support** (Interface and Functional Requirement)
+The application shall integrate with a digital map supplier that can be used as the base for displaying sockets and navigating to them.
+Acceptance criteria:
 
-➥ Provide interface definitions sufficient for implementation and test.
+- As a user, I want to visually locate and navigate to a socket, so that I can use it.
+- As a developer, I want integration with the map software to be robust and backward compatible, so that I minimise code updates
 
-💡 Tips:
-- Use interface control documents or schemas where appropriate and reference them here.
+**User Support** (Functional Requirement and potentially Interface)
+The application shall provide a chat, phone or some other communication functionality to provide a channel for user support.
+Acceptance criteria:
 
-#### 3.1.1 User Interfaces
-💬 _Describes how users interact with the system at a logical level._
+- As a user, I want to easily get support for an issue, so that I can solve my problem and return to using the service quickly.
+- As a customer support staff, I want the customers to easily get in touch, so that I can best resolve their issues.
 
-➥ Define UI elements, flows, and standards to be followed (style guides, accessibility guidelines). Include layout constraints, common controls (e.g., help, search), keyboard shortcuts, error/empty-state behavior, and localization. Keep visual designs in a separate UI specification and reference them.
+**Socket Update Interface** (Functional Requirement and potentially Interface)
+The application shall include an interface to allow updates to socket information.
+Acceptance criteria:
 
-💡 Tips:
-- Reference accessibility standards (e.g., WCAG) and platform-specific guidelines.
-- Consider organizing into subcategories for clarity: Usability/Accessibility (inputs/outputs and dialogs to fit user abstractions, abilities, and expectations), and Convenience.
+- As a socket owner, I want to ensure that my socket information is up to date, so that I can provide the correct service to users.
+- As a user, I want to have up-to-date information, so that I can make correctly informed decisions about which sockets to drive to.
 
-#### 3.1.2 Hardware Interfaces
-💬 _Details interactions with physical devices and platforms._
+**Account Management** (Functional Requirement and potentially Interface)
+The application shall include an account sign up and login system to manage the users personal payments, saved locations and history. This may include integration with third-party login services such as Google.
+Acceptance criteria:
 
-➥ Specify (un)supported device types, data/control signals, electrical or mechanical characteristics if relevant, and communication protocols. Include timing, throughput, and reliability expectations.
+- As a user, I want to easily make and log in to an account, so that I can keep my personal information saved for each transaction or interaction.
+- As a user, I want an account, so that I can save my favourite charging locations.
+- As a data analyst, I want users to have accounts, so that I can analyse their interactions and history, and link it to the correct user.
 
-💡 Tips:
-- Reference applicable hardware specs and certification requirements.
+**Security** (Non-Functional Requirement)
+The application shall keep users' personal information, especially payment information, secure and private, according to
+Acceptance criteria:
 
-#### 3.1.3 Software Interfaces
-💬 _Defines integrations with other software components and services._
+- As a user, I want to be assured that my information is kept safe, so that my identity and capital is not threatened
+- As a company executive, I want to ensure there are no security breaches, so that the viability and reputation of the company is not affected
 
-➥ List connected systems (name and version), required or provided services/APIs, data items/messages exchanged, communication styles/protocols, and limit/error/timeout semantics. Identify shared data and ownership.
+**Availability** (Non-Functional Requirement)
+The application shall maintain daytime-uptime of >99.5%.
+Acceptance criteria:
 
-💡 Tips:
-- Capture versioning and backward compatibility policies.
-- Define authentication/authorization expectations for each integration.
+- As a user, I want the application to be available whenever I need to charge my vehicle, so that I am not left high and dry.
+- As a socket supplier, I want the application to be highly available, so that my business is not affected, and I do not waste time trying to resolve customer issues.
+- As an IT or customer support staff, I want the application to be highly available, so that my time is not wasted fixing issues and responding to customer complaints.
 
-#### 3.1.4 Communication Interfaces
+**Availability** (Non-Functional Requirement)
+The application shall maintain daytime-uptime of >99.5%.
+Acceptance criteria:
 
-
-### 3.2 Functional Requirements
-💬 _Specifies the externally observable behaviors and functions the software shall provide._
-
-➥ Organize functional requirements by feature, use case, or service. For each, describe triggers/inputs, processing/logic (at a black-box level), outputs, and error conditions. For AI behaviors, define determinism bounds (e.g., temperature), refusal criteria, safety rules, and human review points.
-
-💡 Tips:
-- Include edge cases and negative scenarios for completeness.
-- For AI features, include fallback behaviors and thresholds for abstention.
-
-### 3.3 Non-Functional Requirements
-💬 _Quality attributes that constrain or qualify functional behavior._
-
-➥ Use specific metrics, ranges, and conditions.
-
-💡 Tips:
-- When a quality applies only to a subset of functions, reference the related requirement IDs.
-- Provide rationale when targets cut across functions to aid trade-off decisions.
-
-#### 3.3.1 Performance
-💬 _Response time, throughput, and resource usage expectations._
-
-➥ Specify timing relationships, peak/steady-state loads, and performance targets under expected conditions. Include measurement methods, environments, and acceptance thresholds. Note any real-time constraints.
-
-💡 Tips:
-- Include scalability targets and capacity planning assumptions.
-- Consider organizing into subcategories for clarity: Time (latency, throughput, etc.) and Space (memory, storage, bandwidth, etc.).
-
-#### 3.3.2 Security
-💬 _Defines the protection of data, identities, and operations._
-
-➥ Define authentication, authorization, data protection (in transit/at rest), auditing, and privacy requirements. Address abuse/misuse and external attacks (e.g., injection, data exfiltration, or service compromise), and include secure defaults and incident response requirements.
-
-💡 Tips:
-- Distinguish mandatory controls vs. recommended practices.
-- Consider organizing into subcategories for clarity: Safety (harmful external outcomes), Confidentiality (disclose data to unauthorized parties), Privacy (private data disclosed without consent), Integrity (data modified without authorization), and Availability (authorized data or resources made available when requested).
-
-📝 Note:
-Place generic security controls here (3.3.2), and cross-reference from supported controls as necessary:
-- Use 3.1 External Interfaces for interface-level validation and secure protocols.
-- Use 3.4 Compliance for regulatory/contractual obligations and audit evidence.
-- Use 3.6 AI/ML for model-specific runtime protections and data governance.
-
-#### 3.3.3 Reliability
-💬 _Ability to consistently perform as specified._
-
-➥ Specify reliability metrics and techniques (e.g., MTBF, error budgets, retry/backoff, idempotency, redundancy). Define conditions under which reliability is assessed and any failover behaviors. Define graceful degradation (e.g., fallback components, cached results, AI/ML deterministic heuristics), timeout/abstain policies, and rollback to previous versions.
-
-#### 3.3.4 Availability
-💬 _System uptime and readiness to deliver service._
-
-➥ Define availability targets, maintenance windows, and mechanisms like checkpointing, recovery, and restart. Include geographical/zone redundancy if applicable.
-
-💡 Tips:
-- Express availability in terms meaningful to users (e.g., downtime per month) and tie to SLAs/SLOs.
-- Capture scale-out/in behavior affecting availability (e.g., max failover time, quorum constraints).
-
-#### 3.3.5 Observability
-💬 _Ability to understand system state and behavior in production through telemetry._
-
-➥ Define requirements for logs, metrics, traces, and profiling: events/fields, cardinality limits, sampling, retention, and privacy/PII handling in telemetry. Specify standard labels (e.g., service, version, tenant), correlation/trace IDs propagation, and redaction policies. State SLO-aligned alert rules, dashboards, and ownership.
-
-💡 Tips:
-- Avoid maintenance-process details (keep runbooks and on-call policies in 3.5.4 Maintainability).
-
-#### 3.3.6 Useability
-💬 _Ability to understand system state and behavior in production through telemetry._
-
-➥ Define requirements for logs, metrics, traces, and profiling: events/fields, cardinality limits, sampling, retention, and privacy/PII handling in telemetry. Specify standard labels (e.g., service, version, tenant), correlation/trace IDs propagation, and redaction policies. State SLO-aligned alert rules, dashboards, and ownership.
-
-💡 Tips:
-- Avoid maintenance-process details (keep runbooks and on-call policies in 3.5.4 Maintainability).
-
+- As a user, I want the application to be available whenever I need to charge my vehicle, so that I am not left high and dry.
+- As a socket supplier, I want the application to be highly available, so that my business is not affected, and I do not waste time trying to resolve customer issues.
+- As an IT or customer support staff, I want the application to be highly available, so that my time is not wasted fixing issues and responding to customer complaints.
 
 ## 4. Supporting Information
-💬 _Optional supporting material that aids understanding without being normative._
 
-➥ Include glossaries, data dictionaries, models/diagrams, sample datasets, or change-impact analyses that support the main sections. Reference rather than duplicate content when possible.
+**Apps consulted:**
 
-💡 Tips:
-- Keep appendixes organized and referenced from the main text.
+- Octopus Energy (2026) _Octopus Electroverse [mobile app]_. Available at: https://electroverse.com/ (Accessed: 16 January 2026).
+- Zap-Map Ltd (n.d.) _Zap-Map EV charging app [mobile app]_. Available at: https://www.zapmap.com/ (Accessed: 16 January 2026).
+- Recargo, Inc. (2026) _PlugShare [mobile app]_. Available at: https://www.plugshare.com/ (Accessed: 16 January 2026).
 
-• System architecture diagrams: <high-level system architecture diagram,
-deployment architecture diagram, sequence diagrams>
-• Use cases, Use case diagrams
-• API documentation (for third-party integrations).
-• Legal compliance
-• References
+**Template used:**
+
+- Montoya, J. (jam01) (2025) _SRS-Template: A markdown template for Software Requirements Specification based on IEEE 830 and ISO/IEC/IEEE 29148:2011 [GitHub repository]_. Available at: https://github.com/jam01/SRS-Template (Accessed: 16 January 2026).
+
+**Other References:**
+
+- Open Charge Alliance 2026, _Open charge point protocol_, accessed 17 January 2026, https://openchargealliance.org/protocols/open-charge-point-protocol/.
