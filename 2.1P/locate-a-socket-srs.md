@@ -23,24 +23,21 @@ Deakin University
   - [2.4 Product Constraints](#24-product-constraints)
   - [2.5 Assumptions and Dependencies](#25-assumptions-and-dependencies)
 - [3. Specific Requirements](#3-specific-requirements)
-  - [3.1 External Interfaces](#31-external-interfaces)
-  - [3.2 Functional Requirements](#32-functional-requirements)
-  - [3.3 Non-Functional Requirements](#33-non-functional-requirements)
 - [4. Supporting Information](#4-supporting-information)
 <!-- TOC -->
 
 ## Revision History
 
-| Name            | Date       | Reason For Changes | Version |
-| --------------- | ---------- | ------------------ | ------- |
-| Joshua Kempster | 07/01/2026 | Initial Draft      | 0.1     |
-|                 |            |                    |         |
+| Name            | Date       | Reason For Changes             | Version |
+| --------------- | ---------- | ------------------------------ | ------- |
+| Joshua Kempster | 17/01/2026 | Initial Draft                  | 0.1     |
+| Joshua Kempster | 18/01/2026 | Clean up, ready for submission | 1.0     |
 
 ## 1. Introduction
 
 ### 1.1 Document Purpose
 
-This document specifies the software requirements of the Locate-A-Socket software. It does not provide details about how the requirements will be left – simply WHAT the system must do. It is intended for a broad audience – software architects, developers and testers as well as stakeholders who will be involved in the design and maintenance.
+This document specifies the software requirements of the Locate-A-Socket software. It does not provide details about how the requirements will be implemented – simply WHAT the system must do. It is intended for a broad audience – software architects, developers and testers as well as stakeholders who will be involved in the design and maintenance.
 
 ### 1.2 Product Scope
 
@@ -63,6 +60,8 @@ Note that there is currently no detail about Verification/Testing Requirements a
 | Term   | Definition                                                                                                                   |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------- |
 | API    | Application Programming Interface - A set of definitions and protocols for building and integrating application software     |
+| GDPR   | General Data Protection Regulation - EU regulation on user privacy                                                           |
+| OCPP   | Open Charge Point Protocol – a standard to allow management software to interact with sockets                                |
 | SLA    | Service Level Agreement                                                                                                      |
 | Socket | A charging station for an electric vehicle                                                                                   |
 | SRS    | Software Requirements Specification - A document that describes the intended purpose, requirements, and nature of a software |
@@ -106,14 +105,14 @@ The product will provide the following main functions:
 - Frequency of use: Very regular, but low volume of users
 - Accessibility needs: N/A
 
-**Socket Owners:** Professionals who want to add, remove or update information about the sockets they manage.
+**Socket Suppliers:** Professionals who want to add, remove or update information about the sockets they manage.
 
 - Expertise: Medium technical expertise, generally expected to be able to navigate a web application, but not necessarily interact programmatically with a backend.
-- Access level:
+- Access level: Customer-facing and supplier-facing functions
 - Frequency of use: Low to medium regularity, low volume of users
 - Accessibility needs: Ensure accessibility features are available
 
-**Support Staff:** Professionals who provide support to drivers and socket owners, walking them through functionality, providing workarounds for bugs, or escalating issues.
+**Support Staff:** Professionals who provide support to drivers and socket suppliers, walking them through functionality, providing workarounds for bugs, or escalating issues.
 
 - Expertise: High technical expertise
 - Access level: All customer-facing functions, plus account management and backend information
@@ -126,8 +125,7 @@ The product will provide the following main functions:
 - Must integrate into the existing sockets
 - Must support latest iOS and Android versions
 - Must support payment gateway
-
-- Prefer support for Android Auto and Carplay
+- _Prefer_ support for Android Auto and Carplay
 
 ### 2.5 Assumptions and Dependencies
 
@@ -150,6 +148,7 @@ Dependencies
 
 - Reliance on up-to-date information from socket suppliers, either programmatically, or via a management interface.
 - Reliance on a secure payment platform
+- Potentially dependent on the ongoing maintenance of the OCPP.
 
 ## 3. Specific Requirements
 
@@ -190,7 +189,7 @@ Acceptance criteria:
 The application shall include an interface to allow updates to socket information.
 Acceptance criteria:
 
-- As a socket owner, I want to ensure that my socket information is up to date, so that I can provide the correct service to users.
+- As a socket supplier, I want to ensure that my socket information is up to date, so that I can provide the correct service to users.
 - As a user, I want to have up-to-date information, so that I can make correctly informed decisions about which sockets to drive to.
 
 **Account Management** (Functional Requirement and potentially Interface)
@@ -202,22 +201,14 @@ Acceptance criteria:
 - As a data analyst, I want users to have accounts, so that I can analyse their interactions and history, and link it to the correct user.
 
 **Security** (Non-Functional Requirement)
-The application shall keep users' personal information, especially payment information, secure and private, according to
+The application shall keep users' personal information, especially payment information, secure and private, as per relevant privacy frameworks, such as GDPR.
 Acceptance criteria:
 
 - As a user, I want to be assured that my information is kept safe, so that my identity and capital is not threatened
 - As a company executive, I want to ensure there are no security breaches, so that the viability and reputation of the company is not affected
 
 **Availability** (Non-Functional Requirement)
-The application shall maintain daytime-uptime of >99.5%.
-Acceptance criteria:
-
-- As a user, I want the application to be available whenever I need to charge my vehicle, so that I am not left high and dry.
-- As a socket supplier, I want the application to be highly available, so that my business is not affected, and I do not waste time trying to resolve customer issues.
-- As an IT or customer support staff, I want the application to be highly available, so that my time is not wasted fixing issues and responding to customer complaints.
-
-**Availability** (Non-Functional Requirement)
-The application shall maintain daytime-uptime of >99.5%.
+The application shall maintain daytime-uptime (5 AM - 12AM) of >99.5%.
 Acceptance criteria:
 
 - As a user, I want the application to be available whenever I need to charge my vehicle, so that I am not left high and dry.
@@ -226,15 +217,15 @@ Acceptance criteria:
 
 ## 4. Supporting Information
 
-**Apps consulted:**
+**Apps reviewed:**
 
-- Octopus Energy (2026) _Octopus Electroverse [mobile app]_. Available at: https://electroverse.com/ (Accessed: 16 January 2026).
-- Zap-Map Ltd (n.d.) _Zap-Map EV charging app [mobile app]_. Available at: https://www.zapmap.com/ (Accessed: 16 January 2026).
-- Recargo, Inc. (2026) _PlugShare [mobile app]_. Available at: https://www.plugshare.com/ (Accessed: 16 January 2026).
+- Octopus Energy (2026) _Octopus Electroverse [mobile app]_,accessed 16 January 2026. https://electroverse.com/
+- Zap-Map Ltd (n.d.) _Zap-Map EV charging app [mobile app]_, accessed 16 January 2026. https://www.zapmap.com/
+- Recargo, Inc. (2026) _PlugShare [mobile app]_, accessed 16 January 2026. https://www.plugshare.com/
 
 **Template used:**
 
-- Montoya, J. (jam01) (2025) _SRS-Template: A markdown template for Software Requirements Specification based on IEEE 830 and ISO/IEC/IEEE 29148:2011 [GitHub repository]_. Available at: https://github.com/jam01/SRS-Template (Accessed: 16 January 2026).
+- Montoya, J. (jam01) (2025) _SRS-Template: A markdown template for Software Requirements Specification based on IEEE 830 and ISO/IEC/IEEE 29148:2011 [GitHub repository]_., accessed 16 January 2026. https://github.com/jam01/SRS-Template.
 
 **Other References:**
 
