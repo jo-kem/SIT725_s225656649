@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIT725 Week 3</title>
+    <meta name="description" content="enhanced basic template for SIT725 Prac 3">
+    <meta name="author" content="SitePoint">
+    <meta property="og:title" content="SIT725 Week 3">
+    <meta property="og:description" content="enhanced basic template for SIT725 Prac 3">
+    <meta property="og:type" content="website">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Custom Style Sheet-->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class = "red darken-4">
+        <div class="nav-wrapper navbar-size">
+        <a href="#" class="brand-logo"><img class="user-image-size" src="images/ducati-logo.png" alt="Logo"/></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="https://en.wikipedia.org/wiki/Ducati">Wikipedia</a></li>
+            <li><a href="https://www.facebook.com/Ducati">Facebook</a></li>
+            <li><a href="https://x.com/DucatiMotor">X</a></li>
+        </ul>
+        </div>
+    </nav>
+
+    <main class="main-body">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h1 id="heading">Ducati Bikes</h1>
+                    <p class="flow-text">Browse some of Ducati's current lineup below.</p>
+                </div>
+                <div class="col s12 center-align">
+                    <img class="materialboxed materialboxed-image" src="images/motorbike.png">
+                </div>
+                <div class="col s6 right-align">
+                    <a class="waves-effect waves-light btn click-me-button modal-trigger" id="expressInterestButton" data-target="modal1"><i class="material-icons left">auto_fix_high</i>Express Interest</a>
+                </div>
+                <div class="col s6 left-align">
+                    <form action="/api/listSubmissions" method="GET">
+                        <button class="waves-effect waves-light btn click-me-button" type="submit">
+                            <i class="material-icons left">auto_fix_high</i>List Community
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div id="card-section" class="col s12">
+                    <!-- Cards will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Passionate about Ducatis?</h4>
+                <p>Share your details with the community here.</p>
+                <div class="row">
+                    <form class="col s12" action="/api/formSubmit" method="POST" id="interestForm">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="first_name" name="firstname" type="text" class="validate">
+                                <label for="first_name">First Name</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="last_name" name="lastname" type="text" class="validate">
+                                <label for="last_name">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="email" name="email" type="email" class="validate">
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button class="waves-effect waves-light btn click-me-button" id="formSubmit" type="submit">
+                                    <i class="material-icons left">send</i>Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
