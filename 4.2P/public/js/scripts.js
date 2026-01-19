@@ -4,7 +4,7 @@ const addCards = (items) => {
         const card = `<div class="col s12 m4">
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="${item.imagelink}">
+                <img class="activator" src="${item.imageLink}">
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">${item.title}<i class="material-icons right">more_vert</i></span>
@@ -12,7 +12,7 @@ const addCards = (items) => {
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">${item.title}<i class="material-icons right">close</i></span>
-                <p>${item.moreinfo}</p>
+                <p>${item.moreInfo}</p>
             </div>
         </div>
     </div>`;
@@ -22,7 +22,7 @@ const addCards = (items) => {
 
 const getBikes = () => {
     $.get('/api/bikes', (response) => {
-        if (response.statusCode == 200) {
+        if (response.statusCode === 200) {
             addCards(response.data);
         }
     })
