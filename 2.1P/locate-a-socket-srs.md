@@ -2,10 +2,10 @@
 
 ## For Locate-A-Socket
 
-Version 1.2
-Prepared by Joshua Kempster  
-Deakin University  
-07/01/2026
+Version 1.2\
+Prepared by Joshua Kempster\
+Deakin University\
+19/01/2026
 
 ## Table of Contents
 
