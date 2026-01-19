@@ -19,15 +19,24 @@ mongoose.connection.on('connected', () => {
     console.log('Connected to MongoDB!');
 });
 
-// Create Mongoose Schema
-const ProjectSchema = new mongoose.Schema({
+// Create Card Mongoose Schema
+const CardSchema = new mongoose.Schema({
     title: String,
     imageLink: String,
     link: String,
     moreInfo: String,
 });
 
-const Project = mongoose.model('Project', ProjectSchema);
+const CardData = mongoose.model('Cards', CardSchema);
+
+// Create Community Mongoose Schema
+const CommunitySchema = new mongoose.Schema({
+    firstName: String,
+    lastName: String,
+    email: String
+});
+
+const CommunityData = mongoose.model('Community', CommunitySchema);
 
 // Form submission handler
 app.post("/api/formSubmit", (req, res) => {
@@ -38,21 +47,25 @@ app.post("/api/formSubmit", (req, res) => {
         return res.status(400).json({ error: 'Invalid input.' });
     }
 
-    const newSubmission = { firstname, lastname, email };
-    console.log("Form Submitted:", newSubmission);
-    allForms.push(newSubmission);
+    const newSubmission = new CommunityData({
+        firstName: firstname,
+        lastName: lastname,
+        email: email
+    });
+    newSubmission.save().then(() => console.log("Form submitted:", newSubmission));
 
     return res.status(200).json({ message: "Thank you for your submission, " + firstname + "!", submission: newSubmission });
 })
 
 // List all interested form submissions
 app.get("/api/listSubmissions", (req, res) => {
-    return res.status(200).json({ submissions: allForms });
+    const community = CommunityData.find({});
+    return res.status(200).json({ submissions: community });
 })
 
-// List all interested form submissions
+// List all bike cards
 app.get('/api/bikes', async (req, res) => {
-    const bikes = await Project.find({});
+    const bikes = await CardData.find({});
     return res.status(200).json({ statusCode: 200, data: bikes });
 })
 
