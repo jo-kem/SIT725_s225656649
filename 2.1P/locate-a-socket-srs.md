@@ -2,29 +2,10 @@
 
 ## For Locate-A-Socket
 
-Version 0.1  
+Version 1.1
 Prepared by Joshua Kempster  
 Deakin University  
 07/01/2026
-
-## Table of Contents
-
-<!-- TOC -->
-
-- [1. Introduction](#1-introduction)
-  - [1.1 Document Purpose](#11-document-purpose)
-  - [1.2 Product Scope](#12-product-scope)
-  - [1.3 Document Overview](#13-document-overview)
-  - [1.4 Definitions, Acronyms, and Abbreviations](#14-definitions-acronyms-and-abbreviations)
-- [2. Product Overview](#2-product-overview)
-  - [2.1 Product Perspective](#21-product-perspective)
-  - [2.2 Product Functions](#22-product-functions)
-  - [2.3 User Characteristics](#23-user-characteristics)
-  - [2.4 Product Constraints](#24-product-constraints)
-  - [2.5 Assumptions and Dependencies](#25-assumptions-and-dependencies)
-- [3. Specific Requirements](#3-specific-requirements)
-- [4. Supporting Information](#4-supporting-information)
-<!-- TOC -->
 
 ## Revision History
 
@@ -32,6 +13,7 @@ Deakin University
 | --------------- | ---------- | ------------------------------ | ------- |
 | Joshua Kempster | 17/01/2026 | Initial Draft                  | 0.1     |
 | Joshua Kempster | 18/01/2026 | Clean up, ready for submission | 1.0     |
+| Joshua Kempster | 19/01/2026 | Shorten document to 4 pages    | 1.1     |
 
 ## 1. Introduction
 
