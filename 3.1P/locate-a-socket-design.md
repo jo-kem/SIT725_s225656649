@@ -2,10 +2,12 @@
 
 ## Revision History
 
-| Name            | Date       | Reason For Changes                     | Version |
-| --------------- | ---------- | -------------------------------------- | ------- |
-| Joshua Kempster | 21/01/2026 | Initial Draft of stories and use cases | 0.1     |
-| Joshua Kempster | 21/01/2026 | Shorten use cases and stories          | 0.2     |
+| Name            | Date       | Reason For Changes                                      | Version |
+| --------------- | ---------- | ------------------------------------------------------- | ------- |
+| Joshua Kempster | 21/01/2026 | Initial Draft of stories and use cases                  | 0.1     |
+| Joshua Kempster | 21/01/2026 | Shorten use cases and stories                           | 0.2     |
+| Joshua Kempster | 21/01/2026 | Added sequence diagrams and shortened use cases further | 0.3     |
+| Joshua Kempster | 21/01/2026 | Shrunk diagrams, changed formatting and removed content | 1.0     |
 
 ## User Stories
 
@@ -25,11 +27,14 @@
 
 ## Use Cases
 
+Note that some use cases, such as log out, viewing transactions and editing payment details were removed due to lack of space.
+
 ### UC.1 – Making an Account
 
-Primary Actor: Driver | Secondary Actor: Signup Backend\
-Description: Drivers must sign up to use the application. They can create an account by entering their email and password.\
-Basic Flow:
+**Primary Actor:** Driver | **Secondary Actor:** Signup Backend\
+**Description:** Drivers must sign up to use the application. They can create an account by entering their email and password.
+
+**Basic Flow:**
 
 1. Driver provides email and password
 2. Driver accepts the terms of service and privacy policy
@@ -39,43 +44,37 @@ Basic Flow:
 
 ### UC.2 – Logging into an Account
 
-Primary Actor: Driver | Secondary Actor: Account Backend\
-Description: Drivers can log in to their already created account.\
-Basic Flow:
+**Primary Actor:** Driver | **Secondary Actor:** Account Backend\
+**Description:** Drivers can log in to their already created account.
+
+**Basic Flow:**
 
 1. Driver enters email and password
 2. System validates credentials
 3. Driver is authenticated and redirected to the main map view
 
-### UC.3 – Logging out of an Account
+### UC.3 – Adding Payment Details
 
-Primary Actor: Driver | Secondary Actor: Account Backend\
-Description: Drivers can log out of their account.\
-Basic Flow:
+**Primary Actor:** Driver | **Secondary Actor:** Data Backend\
+**Description:** Drivers need to pay to use a socket, so they must be able to add and remove payment details.
 
-1. Driver clicks Log Out
-2. Session is terminated and driver is redirectedtto the login screen
-
-### UC.4 – Adding Payment Details
-
-Primary Actor: Driver | Secondary Actor: Data Backend\
-Description: Drivers need to pay to use a socket, so they must be able to add and remove payment details.\
-Basic Flow:
+**Basic Flow:**
 
 1. Driver navigates to payment settings
 2. Driver enters payment details
 3. System validates and securely stores them
 
-Alternative Flow:
+**Alternative Flow:**
 
 2. Driver clicks "Remove Payment Method" next to the relevant payment method they want to remove
 3. System removes specified payment method
 
-### UC.5 – Browsing, Navigating to and Using Sockets
+### UC.4 – Browsing, Navigating to and Using Sockets
 
-Primary Actor: Driver | Secondary Actor: Data Backend\
-Description: Drivers can use the map interface to browse the sockets near them (or anywhere on the map) and navigate to them. They can then unlock, charge and pay, all from the app. Nice to have: toggle for a list interface; search function by name or address.\
-Basic Flow:
+**Primary Actor:** Driver | **Secondary Actor:** Data Backend\
+**Description:** Drivers can use the map interface to browse the sockets near them (or anywhere on the map) and navigate to them. They can then unlock, charge and pay, all from the app. Nice to have: toggle for a list interface; search function by name or address.
+
+**Basic Flow:**
 
 1. System displays sockets on map with location and details
 2. Driver can zoom, filter, and click for detailed information
@@ -87,31 +86,23 @@ Basic Flow:
 8. Socket is unlocked and charging begins, with progress visible in the app
 9. When charging is complete, payment method is charged based on information received from the socket
 
-### UC.6 – Contacting Support
+### UC.5 – Contacting Support
 
-Primary Actor: Driver | Secondary Actor: Support staff\
-Description: Drivers can contact support directly from the app, using chat or phone function. This provides the support staff with information about their current and recent activity within the application.\
-Basic Flow:
+**Primary Actor:** Driver | **Secondary Actor:** Support staff\
+**Description:** Drivers can contact support directly from the app, using chat or phone function. This provides the support staff with information about their current and recent activity within the application.
+
+**Basic Flow:**
 
 1. Driver clicks support button
 2. System displays chat or phone options
 3. Driver connects with support staff with account context
 
-### UC.7 – Viewing Transactions
+### UC.6 – Updating Socket Information
 
-Primary Actor: Driver | Secondary Actor: Data backend\
-Description: Drivers can view transaction details and receipts.\
-Basic Flow:
+**Primary Actor:** Socket supplier | **Secondary Actor:** Socket backend\
+**Description:** Socket suppliers can update socket information via a supplier dashboard.
 
-1. Driver navigates to transaction history
-2. System displays transactions sorted by date
-3. Driver can view full details and receipts
-
-### UC.8 – Updating Socket Information
-
-Primary Actor: Socket supplier | Secondary Actor: Socket backend\
-Description: Socket suppliers can update socket information via a supplier dashboard.\
-Basic Flow:
+**Basic Flow:**
 
 1. Supplier logs into dashboard
 2. Supplier selects and updates socket information
@@ -119,9 +110,12 @@ Basic Flow:
 
 ## Sequence Diagrams
 
-### Flow 1: Account Creation
+I have only made sequence diagrams for two main use cases, due to lack of space.
+
+### Flow 1: Account Creation (UC.1)
 
 ```mermaid
+%%{init: {'flowchart': {'htmlLabels': true}, 'theme': 'default', 'securityLevel': 'loose', 'sequence': {'mirrorActors': false, 'width': 500}}}%%
 sequenceDiagram
     actor Driver
     participant App
@@ -139,11 +133,12 @@ sequenceDiagram
     Email->>Backend: Confirm verification
     Backend->>App: Account verified
     App->>Driver: Account active - Login
+
 ```
 
-### Flow 2: Browse, Navigate to, and Use a Socket
+### Flow 2: Browse, Navigate to, and Use a Socket (UC.5)
 
-```mermaid
+```mermaid%%{init: {'flowchart': {'htmlLabels': true}, 'theme': 'default', 'securityLevel': 'loose', 'sequence': {'mirrorActors': false, 'width': 300}}}%%
 sequenceDiagram
     actor Driver
     participant App
@@ -175,8 +170,6 @@ sequenceDiagram
     Backend->>Driver: Send receipt
     App->>Driver: Session complete
 ```
-
-## Interface
 
 ## References
 
