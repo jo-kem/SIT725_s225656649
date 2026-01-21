@@ -2,7 +2,7 @@
 
 ## For Locate-A-Socket
 
-Version 1.2\
+Version 1.3\
 Prepared by Joshua Kempster\
 Deakin University\
 19/01/2026
@@ -28,12 +28,13 @@ Deakin University\
 
 ## Revision History
 
-| Name            | Date       | Reason For Changes             | Version |
-| --------------- | ---------- | ------------------------------ | ------- |
-| Joshua Kempster | 17/01/2026 | Initial Draft                  | 0.1     |
-| Joshua Kempster | 18/01/2026 | Clean up, ready for submission | 1.0     |
-| Joshua Kempster | 19/01/2026 | Shorten document to 4 pages    | 1.1     |
-| Joshua Kempster | 19/01/2026 | Add table of contents back in  | 1.2     |
+| Name            | Date       | Reason For Changes                             | Version |
+| --------------- | ---------- | ---------------------------------------------- | ------- |
+| Joshua Kempster | 17/01/2026 | Initial Draft                                  | 0.1     |
+| Joshua Kempster | 18/01/2026 | Clean up, ready for submission                 | 1.0     |
+| Joshua Kempster | 19/01/2026 | Shorten document to 4 pages                    | 1.1     |
+| Joshua Kempster | 19/01/2026 | Add table of contents back in                  | 1.2     |
+| Joshua Kempster | 19/01/2026 | Moved user stories to task 3.1P, updated roles | 1.3     |
 
 ## 1. Introduction
 
@@ -93,7 +94,7 @@ The product will provide the following main functions:
 
 ### 2.3 User Characteristics
 
-**General Users:** Drivers who are the main users of the application for finding and using sockets.
+**Driver:** The main users of the application for finding and using sockets.
 
 - Expertise: Low to high – a range of expertises, generally expected to be able to navigate a web application and payment systems
 - Access level: To customer-facing functions only
@@ -107,7 +108,7 @@ The product will provide the following main functions:
 - Frequency of use: Very regular, but low volume of users
 - Accessibility needs: N/A
 
-**Socket Suppliers:** Professionals who want to add, remove or update information about the sockets they manage.
+**Socket Supplier:** Professionals who want to add, remove or update information about the sockets they manage.
 
 - Expertise: Medium technical expertise, generally expected to be able to navigate a web application, but not necessarily interact programmatically with a backend.
 - Access level: Customer-facing and supplier-facing functions
@@ -120,6 +121,20 @@ The product will provide the following main functions:
 - Access level: All customer-facing functions, plus account management and backend information
 - Frequency of use: Very regular, low volume of users
 - Accessibility needs: Ensure accessibility features are available
+
+**Analyst:** Professionals who analyse application data to find pain points and opportunities for improvement.
+
+- Expertise: High technical expertise
+- Access level: To customer-facing functions and data, not development environment
+- Frequency of use: Low regularity, low volume of users
+- Accessibility needs: N/A
+
+**Company Executive:** Professionals who analyse application data to find pain points and opportunities for improvement.
+
+- Expertise: Low to high technical expertise
+- Access level: Not required, except as user
+- Frequency of use: Low regularity, low volume of users
+- Accessibility needs: N/A
 
 ### 2.4 Product Constraints
 
@@ -158,64 +173,61 @@ Dependencies
 The application shall use a payment platform for authorisation and charging for socket-use.
 Acceptance criteria:
 
-- As a user, I want to easily and reliably make payments online, so that I can interact with a socket entirely from within the app.
-  – As a socket supplier, I want to receive payments, so that I can offer the customer the charging service.
-- As a company owner/executive, I want to reliably receive payments, so that my company is profitable.
-- As an IT support staff, I want integration with the payment platform to be seamless and backward compatible, so that the number of errors and missed payments is minimised.
+- Drivers can easily and reliably make payments online
+- Payment platform integrattion is seamless and backward compatible, with levels of redundancy.
 
 **Integration with Socket Information** (Interface and Functional Requirement)
 The application shall ingest information about sockets that can be displayed to the user. This includes: name, id, branding, charging speed, price, location and number of available sockets at the location.
 Acceptance criteria:
 
-- As a user, I want to know where a socket is and if it is available, so that I can decide whether to navigate to it.
-- As a user, I want to know the price of a socket, so that I can compare it to others and decide which best fits my needs.
-- As a user, I want to know the charging speed of a socket, so that I can compare it to others and decide which best fits my needs.
-  – As a socket supplier, I want my branding on the sockets, so that I can build brand recognition and loyalty.
-- As a customer support staff, I want this information available to a customer, so that the number of calls requesting information is reduced.
+- Drivers can see a socket location
+- Drivers can see if a socket is available
+- Drivers can see the price of a socket
+- Drivers can see the charging speed of a socket
+- Socket suppliers can provide branding for their socket information
 
 **Map Support** (Interface and Functional Requirement)
 The application shall integrate with a digital map supplier that can be used as the base for displaying sockets and navigating to them.
 Acceptance criteria:
 
-- As a user, I want to visually locate and navigate to a socket, so that I can use it.
-- As a developer, I want integration with the map software to be robust and backward compatible, so that I minimise code updates
+- Drivers can visually locate and navigate to sockets
+- Drivers can find the socket most conveniently located on their route
+- Map integration is robust and backward compatible
 
 **User Support** (Functional Requirement and potentially Interface)
 The application shall provide a chat, phone or some other communication functionality to provide a channel for user support.
 Acceptance criteria:
 
-- As a user, I want to easily get support for an issue, so that I can solve my problem and return to using the service quickly.
-- As a customer support staff, I want the customers to easily get in touch, so that I can best resolve their issues.
+- Drivers can click on a support option quickly and easily
+- Support staff can see the drivers' account and activity information, linked to their support request
 
 **Socket Update Interface** (Functional Requirement and potentially Interface)
 The application shall include an interface to allow updates to socket information.
 Acceptance criteria:
 
-- As a socket supplier, I want to ensure that my socket information is up to date, so that I can provide the correct service to users.
-- As a user, I want to have up-to-date information, so that I can make correctly informed decisions about which sockets to drive to.
+- Socket suppliers can update information, either manually, or via API, or using OCPP
 
 **Account Management** (Functional Requirement and potentially Interface)
 The application shall include an account sign up and login system to manage the users personal payments, saved locations and history. This may include integration with third-party login services such as Google.
 Acceptance criteria:
 
-- As a user, I want to easily make and log in to an account, so that I can keep my personal information saved for each transaction or interaction.
-- As a user, I want an account, so that I can save my favourite charging locations.
-- As a data analyst, I want users to have accounts, so that I can analyse their interactions and history, and link it to the correct user.
+- Drivers can create an account
+- Drivers can login and logout of an account
+- Drivers can change their personal and payment information linked to an account
+- Drivers can save their favourite sockets
+- Account activity is logged and available to analysts
 
 **Security** (Non-Functional Requirement)
 The application shall keep users' personal information, especially payment information, secure and private, as per relevant privacy frameworks, such as GDPR.
 Acceptance criteria:
 
-- As a user, I want to be assured that my information is kept safe, so that my identity and capital is not threatened
-- As a company executive, I want to ensure there are no security breaches, so that the viability and reputation of the company is not affected
+- Platform is secure and passes pentration and other security testing
 
 **Availability** (Non-Functional Requirement)
-The application shall maintain daytime-uptime (5 AM - 12AM) of >99.5%.
+The application shall maintain daytime-uptime (5 AM - 12AM) of >99.9%.
 Acceptance criteria:
 
-- As a user, I want the application to be available whenever I need to charge my vehicle, so that I am not left high and dry.
-- As a socket supplier, I want the application to be highly available, so that my business is not affected, and I do not waste time trying to resolve customer issues.
-- As an IT or customer support staff, I want the application to be highly available, so that my time is not wasted fixing issues and responding to customer complaints.
+- Application has daytime uptime (5AM - 12AM) of > 99.9% – i.e. down for less than 86.4 seconds per day.
 
 ## 4. Supporting Information
 
