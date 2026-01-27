@@ -1,9 +1,7 @@
 const bookService = require('../services/books.service');
 
 exports.getAllBooks = (req, res) => {
-    console.log("Fetching all books");
     const items = bookService.getAllBooks();
-    console.log(items)
     res.json({ data: items });
 };
 
