@@ -15,23 +15,19 @@
             try {
                 console.log('Fetching books from /api/books');
                 const response = await fetch('/api/books');
-                console.log(response)
                 const result = await response.json();
-                if (result.status === 200) {
-                    const bookList = document.getElementById('book-list');
-                    bookList.innerHTML = '';
-                    result.data.forEach(book => {
-                        const bookItem = document.createElement('div');
-                        bookItem.className = 'book-item';
-                        bookItem.innerHTML = `
-                            <h3>${book.title}</h3>
-                            <p><strong>Author:</strong> ${book.author}</p>
-                        `;
-                        bookList.appendChild(bookItem);
-                    });
-                } else {
-                    console.error('Failed to fetch books');
-                }
+                
+                const bookList = document.getElementById('book-list');
+                bookList.innerHTML = '';
+                result.data.forEach(book => {
+                    const bookItem = document.createElement('div');
+                    bookItem.className = 'book-item';
+                    bookItem.innerHTML = `
+                        <h3>${book.title}</h3>
+                        <p><strong>Author:</strong> ${book.author}</p>
+                    `;
+                    bookList.appendChild(bookItem);
+                });
             } catch (error) {
                 console.error('Error fetching books:', error);
             }
