@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Items</title>
+</head>
+<body>  
+    <h1>Book Items</h1>
+    <button id="load-books">Load Books</button>
+    <div id="book-list">
+        <!-- Book items will be displayed here -->
+    </div>
+    <script>
+        const btn = document.getElementById('load-books');
+        const out = document.getElementById('book-list');
+
+        function render(items) {
+            out.innerHTML = '';
+            if (!Array.isArray(items) || items.length === 0) {
+                out.textContent = 'No books.';
+                return;
+            }
+            for (const book of items) {
+                const p = document.createElement('p');
+                
+                const price = 
+                    typeof book.price === 'string'
+                    ? book.price
+                    : (book.price && book.price.$numberDecimal) || book.price || '';
+                p.textContent = `${book.title} by ${book.author} - ${book.currency || 'AUD'} $${price}`;
+                out.appendChild(p);
+            };
+        };
+
+        btn.addEventListener('click', async () => {
+            out.textContent = 'Loading...';
+            try {
+                const res = await fetch('/api/books');
+                if (!res.ok) throw new Error(`Error: ${res.status}`);
+                const body = await res.json();
+                render(body.data);
+            } catch (err) {
+                console.error('Error loading books:', err);
+                out.textContent = `Error loading books.`;
+            }
+        });
+    </script>
+</body>
+</html>
