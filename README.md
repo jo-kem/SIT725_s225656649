@@ -186,3 +186,19 @@ Some additional unit tests that could be implemented:
 - **Request**: HTTP client for integration testing API endpoints
 
 Run `npm start` followed by `npm test` to execute the test suite.
+
+### 7.2P – Socket Programming
+
+This directory contains task 7.2P, implementing real-time bidirectional communication using Socket.io. The application displays a psychedelic text that dynamically changes color when users hover over it. Socket.io enables instant communication between the server and all connected clients, allowing color changes to be broadcast in real-time.
+
+- public: contains index.html with the psychedelic text display and styles.css for layout and styling.
+- public/scripts.js: client-side Socket.io code that emits `mouseEntered` events when hovering over the h1 and listens for `colourChange` events from the server.
+- server.js: the Express server with Socket.io integration, listens for `mouseEntered` events from clients and broadcasts `colourChange` events with random colors.
+- package.json: includes Socket.io as a dependency.
+
+**Socket.io Events:**
+
+- **`mouseEntered`** (client → server): Emitted when the user's mouse enters the h1 element
+- **`colourChange`** (server → client): Broadcast to all connected clients with updated background and text colors
+
+The application demonstrates real-time event-driven communication where client interactions trigger server-side color generation, which is then instantly communicated back to all connected clients.
