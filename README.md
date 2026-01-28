@@ -8,8 +8,10 @@
 - 3.1P: Design
 - 3.2P: Prac 3 – Getting Graphical
 - 4.2P: Prac 4 – Databases
-- 5.2P: Prac 5 – MVC Architecture
-- 5.3C: Prac 5 – Database Integration
+- 5.2P: Prac 5 – Using MVC Strategy
+- 5.3C: Prac 5 – MVC + Database
+- 6.2C: Prac 6 – Testing Your Code
+- 7.2P: Prac 7 – Socket Programming
 
 ### 1.3P – Basics of Programming and GIT
 
@@ -143,3 +145,44 @@ This directory contains challenge 5.3C, extending the 5.2P MVC architecture by r
 - `GET /api/books/:id`: Retrieve a specific book by ID from MongoDB
 
 Run `npm run seed` before starting the server to populate the books collection.
+
+### 6.2C – Testing Your Code
+
+This directory contains prac 6.2C, implementing automated testing for a calculator application using Mocha and Chai. The project includes unit tests for the function `addNumbers` and integration tests for one of the API endpoints `GET /api/calc`. Tests validate correct functionality, edge cases, error handling, and input validation across various scenarios.
+
+- css: contains styling for the calculator interface.
+- public: contains index.html for the calculator web interface.
+- scripts: contains calculationFunctions.js with the business logic being tested.
+- server.js: the Express server providing the calculator API endpoints.
+- test/addNumbers.test.js: unit tests for the addNumbers function covering multiple numbers, single numbers, negative numbers, invalid inputs, numeric strings, empty arrays, and large numbers.
+- test/calculatorAPI.test.js: integration tests for the `/api/calc` endpoint covering empty inputs, invalid characters, numeric strings, invalid operations, addition, subtraction, multiplication, and division operations.
+- package.json: includes Mocha and Chai as dev dependencies with test scripts configured.
+
+**Additional tests to consider:**
+This is not a comprehensive suite of all possible tests. At a high level, some more that could be considered are:
+
+- `/api/adds` endpoint
+- `multiplyNumbers` function
+- `/api/multiplies` endpoint
+
+Some additional unit tests that could be implemented:
+
+- Testing addition with decimal numbers
+- Testing addition with no numbers provided
+- Testing addition with leading/trailing spaces
+- Testing addition with mixed valid and invalid inputs
+- Testing addition with zeroes included
+- Testing addition with very small (negative) numbers
+- Testing addition with duplicate numbers
+- Testing addition with scientific notation numbers
+- Testing addition with extremely large list of numbers
+- Testing addition with special characters in input
+- Testing addition with null/undefined values in input
+
+**Test Frameworks:**
+
+- **Mocha**: Test runner with spec reporter for readable test output
+- **Chai**: Assertion library using expect syntax for clear test assertions
+- **Request**: HTTP client for integration testing API endpoints
+
+Run `npm start` followed by `npm test` to execute the test suite.

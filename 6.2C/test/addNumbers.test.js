@@ -53,24 +53,4 @@ describe('Addition of multiple numbers', function () {
         done();
     });
 
-    /* Additional unimplemented tests:
-    - Testing addition with decimal numbers
-    - Testing addition with no numbers provided
-    - Testing addition with leading/trailing spaces
-    - Testing addition with mixed valid and invalid inputs
-    - Testing addition with zeroes included
-    - Testing addition with very small (negative) numbers
-    - Testing addition with duplicate numbers
-    - Testing addition with scientific notation numbers
-    - Testing addition with extremely large list of numbers
-    - Testing addition with special characters in input
-    - Testing addition with null/undefined values in input
-    */
-
 });
-
-/* Extra Tests:
-- adds endpoint
-- multiplyNumbers function
-- multiplies endpoint
-*/
