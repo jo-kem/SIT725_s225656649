@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <h1>RESTematics</h1>
+    <p>Use the fields below to perform calculations.</p>
+    <form action="/api/calc" method="GET">
+        <select name="op">
+            <option value="add">Add</option>
+            <option value="subtract">Subtract</option>
+            <option value="multiply">Multiply</option>
+            <option value="divide">Divide</option>
+        </select>
+        <input name="a" required>
+        <input name="b" required>
+        <button type="submit">Calculate</button>
+    </form>
+
+    <p>NB: Use the <code>/multiplies</code> and <code>/adds</code> endpoints to perform calculations on multiple numbers at a time.</p>
+</body>
+
+</html>
