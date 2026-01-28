@@ -6,7 +6,8 @@
     <title>Book Items</title>
 </head>
 <body>  
-    <h1>Book Items</h1>
+    <h1>Books Catalogue developed by s225656649</h1>
+    <p>Click the button below to get all books from the server:</p>
     <button id="load-books">Load Books</button>
     <div id="book-list">
         <!-- Book items will be displayed here -->
@@ -28,7 +29,7 @@
                     typeof book.price === 'string'
                     ? book.price
                     : (book.price && book.price.$numberDecimal) || book.price || '';
-                p.textContent = `${book.title} by ${book.author} - ${book.currency || 'AUD'} $${price}`;
+                p.textContent = `${book.title} ${book.currency || 'AUD'} $${price}`;
                 out.appendChild(p);
             };
         };
