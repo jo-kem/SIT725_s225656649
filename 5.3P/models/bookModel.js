@@ -13,3 +13,5 @@ const bookSchema = new mongoose.Schema({
     toJson: { getters: true, virtuals: false, transform(_doc, ret) { delete ret.__v; return ret; } },
     toObject: { getters: true, virtuals: false }
 });
+
+module.exports = mongoose.model('Book', bookSchema);

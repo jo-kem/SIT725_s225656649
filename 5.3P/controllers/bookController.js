@@ -1,4 +1,4 @@
-const bookService = require('../services/booksService');
+const bookService = require('../services/bookService');
 
 exports.getAllBooks = async (req, res, next) => {
     try {
