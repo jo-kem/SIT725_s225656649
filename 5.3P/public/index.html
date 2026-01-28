@@ -4,48 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Items</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
-<body>  
-    <h1>Books Catalogue developed by s225656649</h1>
-    <p>Click the button below to get all books from the server:</p>
-    <button id="load-books">Load Books</button>
-    <div id="book-list">
-        <!-- Book items will be displayed here -->
+<body>
+    <div class="container">
+        <h1>Books Catalogue developed by s225656649</h1>
+        <p>Click the button below to get all books from the server:</p>
+        <button id="load-books" class="btn waves-effect waves-light">Load Books</button>
+        <div class="row">
+            <div class="col s6 left-align" id="book-list">
+                <!-- Book items will be displayed here -->
+            </div>
+            <div class="col s6 left-align" id="book-details">
+                <!-- Book details will be displayed here -->
+            </div>
+        </div>
     </div>
     <script>
         const btn = document.getElementById('load-books');
-        const out = document.getElementById('book-list');
+        const lst = document.getElementById('book-list');
+        const det = document.getElementById('book-details');
 
-        function render(items) {
-            out.innerHTML = '';
+        function renderList(items) {
+            det.innerHTML = '';
+            det.style = "";
+            lst.innerHTML = '';
             if (!Array.isArray(items) || items.length === 0) {
-                out.textContent = 'No books.';
+                lst.textContent = 'No books.';
                 return;
             }
             for (const book of items) {
                 const p = document.createElement('p');
+                const a = document.createElement('a');
                 
                 const price = 
                     typeof book.price === 'string'
                     ? book.price
                     : (book.price && book.price.$numberDecimal) || book.price || '';
-                p.textContent = `${book.title} ${book.currency || 'AUD'} $${price}`;
-                out.appendChild(p);
+                a.textContent = `${book.title} ${price} ${book.currency || 'AUD'}`;
+                a.id = `${book._id}`;
+                a.className = 'book-item';
+                a.style.cursor = 'pointer';
+                
+                // Attach click listener to each book item
+                a.addEventListener('click', async () => {
+                    await loadBookDetails(book._id);
+                });
+                
+                p.appendChild(a);
+                lst.appendChild(p);
             };
         };
 
         btn.addEventListener('click', async () => {
-            out.textContent = 'Loading...';
+            lst.textContent = 'Loading...';
             try {
                 const res = await fetch('/api/books');
                 if (!res.ok) throw new Error(`Error: ${res.status}`);
                 const body = await res.json();
-                render(body.data);
+                renderList(body.data);
             } catch (err) {
                 console.error('Error loading books:', err);
-                out.textContent = `Error loading books.`;
+                lst.textContent = `Error loading books.`;
             }
         });
+
+        function renderDetails(book) {
+            det.innerHTML = '';
+            det.style = "border:1px solid black; padding: 10px; margin-top: 20px;"
+
+            const pTitle = document.createElement('p');
+            pTitle.textContent = `Title: ${book.title}`;
+            det.appendChild(pTitle);
+
+            const pAuthor = document.createElement('p');
+            pAuthor.textContent = `Author: ${book.author}`;
+            det.appendChild(pAuthor);
+
+            const pYear = document.createElement('p');
+            pYear.textContent = `Year: ${book.year}`;
+            det.appendChild(pYear);
+
+            const pGenre = document.createElement('p');
+            pGenre.textContent = `Genre: ${book.genre}`;
+            det.appendChild(pGenre);
+
+            const pSummary = document.createElement('p');
+            pSummary.textContent = `Summary: ${book.summary}`;
+            det.appendChild(pSummary);
+            
+            const pPrice = document.createElement('p');
+            const price = 
+                typeof book.price === 'string'
+                ? book.price
+                : (book.price && book.price.$numberDecimal) || book.price || '';
+            pPrice.textContent = `Price (${book.currency || 'AUD'}): $${price}`;
+            det.appendChild(pPrice);
+        };
+
+        const loadBookDetails = async (bookId) => {
+            det.textContent = 'Loading...';
+            try {
+                const res = await fetch(`/api/books/${bookId}`);
+                if (!res.ok) throw new Error(`Error: ${res.status}`);
+                const body = await res.json();
+                renderDetails(body.data);
+            } catch (err) {
+                console.error('Error loading book details:', err);
+                det.textContent = `Error loading book details.`;
+            }
+        };
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
