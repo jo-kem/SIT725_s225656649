@@ -9,7 +9,7 @@
 - 3.2P: Prac 3 – Getting Graphical
 - 4.2P: Prac 4 – Databases
 - 5.2P: Prac 5 – MVC Architecture
-- 5.3P: Prac 5 – Database Integration
+- 5.3C: Prac 5 – Database Integration
 
 ### 1.3P – Basics of Programming and GIT
 
@@ -76,49 +76,70 @@ This folder contains the design document for task 3.1P in markdown format.
 
 ### 3.2P – Getting Graphical
 
-This directory contains task 3.2P, an express web server with a graphical interface for displaying book items.
+This directory contains task 3.2P, an Express web server with a Ducati motorcycles fan page. The application allows users to submit a form with their first name, last name, and email to join a community. The submitted data is stored in memory on the server and can be retrieved via API endpoints. The page features a card-based layout displaying motorcycle information with images.
 
-- css: contains the style file.
-- js: contains the client-side JavaScript functions.
-- public: contains the index.html file with the webpage content.
-- server.js: the Express server and API endpoints.
+- css: contains styling for the motorcycle cards and layout.
+- js: contains client-side JavaScript for form submission and data fetching.
+- public: contains index.html with the webpage content and images directory.
+- server.js: handles form submission via POST `/api/formSubmit` and retrieves submissions via GET `/api/listSubmissions`.
 - package.json and package-lock.json: package configs.
+
+**Available Endpoints:**
+
+- `POST /api/formSubmit`: Submit form data (firstname, lastname, email)
+- `GET /api/listSubmissions`: Retrieve all submitted forms
 
 ### 4.2P – Databases
 
-This directory contains task 4.2P, an express web server with database integration using MongoDB.
+This directory contains task 4.2P. It extends 3.2P by integrating MongoDB to persist community submissions and motorcycle card data. Form submissions and card information are now stored in MongoDB collections instead of in-memory arrays. Includes a seed script to populate the database with initial card data.
 
-- css: contains the style file.
-- js: contains the client-side JavaScript functions.
-- public: contains the index.html file.
-- server.js: the Express server with database connectivity.
-- seed.js: database seed script.
-- package.json and package-lock.json: package configs.
+- css: contains styling for the motorcycle cards and layout.
+- js: contains client-side JavaScript for form submission and data fetching.
+- public: contains index.html with the webpage content and images directory.
+- server.js: Express server with Mongoose schemas for Cards and Community data, handles form submissions and database queries.
+- seed.js: populates the Cards collection with initial motorcycle data.
+- package.json and package-lock.json: package configs with MongoDB driver (mongoose) dependency.
 
-Run seed.js first: `npm run seed`
+**Available Endpoints:**
+
+- `POST /api/formSubmit`: Submit form data to Community collection
+- `GET /api/listSubmissions`: Retrieve all community members
+- `GET /api/allCards`: Retrieve all motorcycle cards
+
+Run `npm run seed` before starting the server to populate the Cards collection.
 
 ### 5.2P – MVC Architecture
 
-This directory contains task 5.2P, implementing the MVC (Model-View-Controller) architecture pattern.
+This directory contains task 5.2P, implementing the MVC (Model-View-Controller) architecture pattern with a book catalogue. The application separates concerns: controllers handle HTTP requests, services contain business logic, and routes define endpoints. Book data is hardcoded in the service and returned as JSON. The frontend dynamically displays books and their details when clicked.
 
-- controllers: contains bookController.js with controller logic.
-- public: contains the index.html and static assets (css, js).
-- routes: contains book.js with route definitions.
-- services: contains bookService.js with business logic.
-- server.js: the Express server.
+- controllers: contains bookController.js which calls services and returns JSON responses.
+- public: contains index.html and scripts.js (client-side JavaScript that fetches books and handles the UI).
+- routes: contains book.js which defines GET endpoints for `/books` and `/books/:id`.
+- services: contains bookService.js with functions to retrieve all books or a specific book by ID.
+- server.js: the Express server that mounts routes at `/api/books`.
 - package.json and package-lock.json: package configs.
+
+**Available Endpoints:**
+
+- `GET /api/books`: Retrieve all books
+- `GET /api/books/:id`: Retrieve a specific book by ID
 
 ### 5.3C – Database Integration
 
-This directory contains task 5.3C, extending the MVC architecture with database integration.
+This directory contains challenge 5.3C, extending the 5.2P MVC architecture by replacing hardcoded book data with MongoDB persistence. Book information is now stored in a MongoDB collection and seeded via a script. The architecture maintains separation of concerns with models defining the database schema, services querying the database, and controllers handling HTTP requests.
 
-- controllers: contains bookController.js and index.js.
-- models: contains bookModel.js for database schema definition.
-- public: contains the index.html and static assets (css, js).
-- routes: contains book.js with route definitions.
-- scripts: contains seed.js for database seeding.
-- services: contains bookService.js with business logic.
-- server.js: the Express server with MongoDB integration.
-- package.json and package-lock.json: package configs.
+- controllers: contains bookController.js and index.js for handling book-related HTTP requests.
+- models: contains bookModel.js which defines the Mongoose schema for books.
+- public: contains index.html and scripts.js (client-side JavaScript) with styling and assets.
+- routes: contains book.js which defines GET endpoints for `/books` and `/books/:id`.
+- scripts: contains seed.js to populate the MongoDB books collection with initial data.
+- services: contains bookService.js with functions to query the MongoDB database.
+- server.js: the Express server with Mongoose connection to MongoDB.
+- package.json and package-lock.json: package configs with MongoDB dependencies.
 
-Run seed.js first: `npm run seed`
+**Available Endpoints:**
+
+- `GET /api/books`: Retrieve all books from MongoDB
+- `GET /api/books/:id`: Retrieve a specific book by ID from MongoDB
+
+Run `npm run seed` before starting the server to populate the books collection.
